@@ -8,7 +8,7 @@ from ament_index_python.packages import get_package_share_directory
 from launch.launch_context import LaunchContext
 
 # base usage: ros2 launch ros2_bag record_bag.launch.py
-# it record a bag called test, in the folder /root/rosbags that is created if not present
+# it records a bag called test, in the folder /root/rosbags that is created if not present
 # complete usage: ros2 launch ros2_bag record_bag.launch.py folder:=/root/rosbags file:=test overwrite:=false
 def launch_setup(context, *args, **kwargs):
 	qos_override_path = os.path.join(get_package_share_directory('ros2_bag'), 'config/qos_override.yaml'))
