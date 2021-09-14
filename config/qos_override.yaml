@@ -1,0 +1,14 @@
+/scan:
+  history: keep_last
+  depth: 5
+  reliability: reliable
+  durability: volatile
+  liveliness: automatic
+  avoid_ros_namespace_conventions: false
+/tf_static:
+  history: keep_last
+  depth: 5
+  reliability: reliable
+  durability: transient_local
+  liveliness: automatic
+  avoid_ros_namespace_conventions: false
