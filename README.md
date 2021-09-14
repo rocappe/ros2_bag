@@ -11,4 +11,4 @@ It will record a bag called test, in the folder /root/rosbags that is created if
 
 It works as above.
 
-If overwrite is not set to true, it will create a new file called <file_name> follewed by a number from 1 to 100, if the others are already present
+If overwrite is not set to true, it will create a new file called <file_name> followed by a number from 1 to 100, if the others are already present
