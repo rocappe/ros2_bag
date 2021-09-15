@@ -17,11 +17,9 @@ def get_latest_rosbag(base_dir):
 				latest = folder
 				first = False
 			else:
-				#print(f"Old {latest.name} modification time {latest.stat().st_mtime}" )
-				#print(f"New {folder.name} modification time {folder.stat().st_mtime}")
 				if folder.stat().st_ctime > latest.stat().st_ctime:
 					latest = folder
-	return folder.path
+	return latest.path
 
 def launch_setup(context, *args, **kwargs):
 	base_dir = "/root/rosbags"
@@ -39,14 +37,20 @@ def launch_setup(context, *args, **kwargs):
 
 
 def generate_launch_description():
+	rviz_node = Node(
+		package='rviz2',
+		executable='rviz2',
+		name='rviz2',
+		arguments=['-d', os.path.join(get_package_share_directory('ros2_bag'), 'config/rosbag_conf.rviz')],
+		output='screen')
+	tf2_node = Node(
+		package='tf2_ros',
+		executable = 'static_transform_publisher',
+		arguments = ["0", "0", "0", "0", "0", "0", "odom_frame", "map"]
+		)
 	return LaunchDescription([
-		Node(
-			package='rviz2',
-			executable='rviz2',
-			name='rviz2',
-			arguments=['-d', os.path.join(get_package_share_directory('ros2_bag'), 'config/rosbag_conf.yaml')],
-			parameters=[{'use_sim_time': False}]
-		),
+		rviz_node,
+		#tf2_node,
 		DeclareLaunchArgument('file', default_value='none'),
 		OpaqueFunction(function = launch_setup)
 		])
