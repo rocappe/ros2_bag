@@ -20,4 +20,4 @@ If overwrite is not set to true, it will create a new file called <file_name> fo
 It will play the latest file on Windows and the latest file on Linux only if none of them has been played since the last one was created, from the folder /root/rosbags. Otherwise on Linux it will play the last one that was played, since it had the latest metadata change.
 This is caused by the inability to store and/or acces file creation time on unix with filesystem ext4, for now.
 
-**Complete usage with default arguments:** *ros2 launch ros2_bag record_bag.launch.py folder:=/root/rosbags file:=test
+**Complete usage with default arguments:** *ros2 launch ros2_bag record_bag.launch.py folder:=/root/rosbags file:=test*
