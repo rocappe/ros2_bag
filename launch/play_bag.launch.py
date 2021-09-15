@@ -44,7 +44,7 @@ def generate_launch_description():
 			package='rviz2',
 			executable='rviz2',
 			name='rviz2',
-			arguments=['-d', os.path.join(get_package_share_directory('ros2_bag'), 'config/rosbag_conf.yaml'))],
+			arguments=['-d', os.path.join(get_package_share_directory('ros2_bag'), 'config/rosbag_conf.yaml')],
 			parameters=[{'use_sim_time': False}]
 		),
 		DeclareLaunchArgument('file', default_value='none'),
