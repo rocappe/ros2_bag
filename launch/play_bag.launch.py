@@ -10,6 +10,7 @@ from launch.launch_context import LaunchContext
 
 
 def get_latest_rosbag(base_dir):
+	# st_ctime is not the creation time but the time of the last metadata change
 	first = True
 	for folder in os.scandir(base_dir):
 		if folder.is_dir():
@@ -22,12 +23,12 @@ def get_latest_rosbag(base_dir):
 	return latest.path
 
 def launch_setup(context, *args, **kwargs):
-	base_dir = "/root/rosbags"
-	file = LaunchConfiguration('file').perform(context)
-	if file == 'none':
+	base_dir = LaunchConfiguration('folder').perform(context)
+	file_name = LaunchConfiguration('file').perform(context)
+	if file_name == 'none':
 		path = get_latest_rosbag(base_dir)
 	else:
-		path = os.path.join(base_dir, file)
+		path = os.path.join(base_dir, file_name)
 	print(f"\nPlaying {path}\n")
 	rosbag_play = ExecuteProcess(
 		cmd=['ros2', 'bag', 'play', path],
@@ -51,6 +52,7 @@ def generate_launch_description():
 	return LaunchDescription([
 		rviz_node,
 		#tf2_node,
+		DeclareLaunchArgument('folder', default_value='/root/rosbags'),
 		DeclareLaunchArgument('file', default_value='none'),
 		OpaqueFunction(function = launch_setup)
 		])

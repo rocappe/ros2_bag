@@ -13,11 +13,11 @@ from launch.launch_context import LaunchContext
 def launch_setup(context, *args, **kwargs):
 	qos_override_path = os.path.join(get_package_share_directory('ros2_bag'), 'config/qos_override.yaml')
 	base_dir = LaunchConfiguration('folder').perform(context)
-	file = LaunchConfiguration('file').perform(context)
+	file_name = LaunchConfiguration('file').perform(context)
 	ow = LaunchConfiguration('overwrite').perform(context)
 	if not os.path.isdir(base_dir):
 		os.mkdir(base_dir)
-	rosbag_path = os.path.join(base_dir, file)
+	rosbag_path = os.path.join(base_dir, file_name)
 	if os.path.isdir(rosbag_path):
 		# if the file has to be overriden do it, otherwise create one with the same name
 		# plus an increasing integer from 1 to 100 at the end
