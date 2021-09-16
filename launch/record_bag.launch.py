@@ -41,6 +41,15 @@ def launch_setup(context, *args, **kwargs):
 		'-o', new_rosbag_path],
 		output='screen'
 		)
+	rosbag_record_split = ExecuteProcess(
+		cmd=['ros2', 'bag', 'record',
+		'/local_costmap/costmap', '/global_costmap/costmap', '/behavior_tree_log',
+		'/camera/pose',	'/tf', '/local_plan', '/received_global_plan',
+		 '/transformed_global_plan', '/map', '/tf_static', '/scan',
+		'/goal_update', '/goal_pose', '-b', '500000000', '--qos-profile-overrides-path', qos_override_path,
+		'-o', new_rosbag_path],
+		output='screen'
+		)
 	return [rosbag_record]
 
 
