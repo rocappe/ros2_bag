@@ -128,6 +128,6 @@ def main(bag_path):
 if __name__ == "__main__":
     path = sys.argv[1]
     bag_path = Path(path)
-    new_bag_path = bag_path.parent / (bag_path.name + "_fixed1")
+    new_bag_path = bag_path.parent / (bag_path.name + "_fixed")
     rewrite_rosbag(bag_path, new_bag_path)
     #main(new_bag_path)
