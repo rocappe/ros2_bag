@@ -126,7 +126,7 @@ def main(bag_path):
         #     print(msg.header.frame_id)
 
 if __name__ == "__main__":
-    path = sys.argv[0]
+    path = sys.argv[1]
     bag_path = Path(path)
     new_bag_path = bag_path.parent / (bag_path.name + "_fixed1")
     rewrite_rosbag(bag_path, new_bag_path)
