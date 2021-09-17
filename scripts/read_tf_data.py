@@ -22,15 +22,20 @@ def check_for_impossible_values(transform):
 
 def correct_impossible_values(transform):
     max_value = 1e100
+    fixed = False
     if transform.transform.translation.x > max_value:
         transform.transform.translation.x = .0
-    elif transform.transform.translation.y > max_value:
-        transform.transform.translation.x = .0
-    elif transform.transform.translation.z > max_value:
+        fixed = True
+    if transform.transform.translation.y > max_value:
+        transform.transform.translation.y = .0
+        fixed = True
+    if transform.transform.translation.z > max_value:
         transform.transform.translation.z = .0
+        fixed = True
+    if fixed:
+        return 1
     else:
         return 0
-    return 1
 
 
 def print_transform(transform):
