@@ -34,10 +34,7 @@ def launch_setup(context, *args, **kwargs):
 	print(f"Saving robag in {new_rosbag_path}")
 	rosbag_record = ExecuteProcess(
 		cmd=['ros2', 'bag', 'record',
-		'/local_costmap/costmap', '/global_costmap/costmap', '/behavior_tree_log',
-		'/camera/pose',	'/tf', '/local_plan', '/received_global_plan',
-		 '/transformed_global_plan', '/map', '/tf_static', '/scan',
-		'/goal_update', '/goal_pose', '--qos-profile-overrides-path', qos_override_path,
+		'/tf', '/tf_static', '/camera/depth/color/points', '/scan', '/odom', '--qos-profile-overrides-path', qos_override_path,
 		'-o', new_rosbag_path],
 		output='screen'
 		)

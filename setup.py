@@ -22,3 +22,4 @@ setup(
     license='TODO: License declaration',
     tests_require=['pytest'],
 )
+
