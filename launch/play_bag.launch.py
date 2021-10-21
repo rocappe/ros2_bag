@@ -52,7 +52,7 @@ def generate_launch_description():
 	#	)
 	odom_tf_launch = IncludeLaunchDescription(
 		PythonLaunchDescriptionSource([odom_tf_pub_dir, '/odom_tf_pub.launch.py']),
-		launch_arguments={'use_t265': 'False', 'use_zed2': 'True'}.items(),
+		launch_arguments={'use_t265': 'True', 'use_zed2': 'False'}.items(),
 	)
 	return LaunchDescription([
 		rviz_node,
